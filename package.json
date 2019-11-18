@@ -4,6 +4,7 @@
   "description": "Convert Speaker Measurement Data to Sigma Studio MLSSA datafile",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "jest"
   },
   "repository": {
