@@ -25,5 +25,8 @@
   "bugs": {
     "url": "https://github.com/JimmyPesto/SigmaConverter/issues"
   },
-  "homepage": "https://github.com/JimmyPesto/SigmaConverter#readme"
+  "homepage": "https://github.com/JimmyPesto/SigmaConverter#readme",
+  "devDependencies": {
+    "jest": "^24.9.0"
+  }
 }
