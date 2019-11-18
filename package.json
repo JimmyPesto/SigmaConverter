@@ -1,0 +1,29 @@
+{
+  "name": "sigmaconverter",
+  "version": "1.0.0",
+  "description": "Convert Speaker Measurement Data to Sigma Studio MLSSA datafile",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JimmyPesto/SigmaConverter.git"
+  },
+  "keywords": [
+    "Sigma",
+    "Studio",
+    "frd",
+    "csv",
+    "MLSSA",
+    "Speaker",
+    "Data",
+    "Fileconverter"
+  ],
+  "author": "JimmyPesto",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JimmyPesto/SigmaConverter/issues"
+  },
+  "homepage": "https://github.com/JimmyPesto/SigmaConverter#readme"
+}
