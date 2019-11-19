@@ -29,5 +29,8 @@
   "homepage": "https://github.com/JimmyPesto/SigmaConverter#readme",
   "devDependencies": {
     "jest": "^24.9.0"
+  },
+  "dependencies": {
+    "scramjet": "^4.27.2"
   }
 }
