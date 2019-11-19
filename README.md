@@ -15,6 +15,9 @@ npm start /path/to/source.*
 
 The converted datafile will have the same name as source file with ".txt" file format equivalent to Sigma Studio MLSSA data. It will be stored in the "/converted_data" directory.
 
+## How it works
+readStream -> transformStream -> writeStream
+
 @TODOs
 * Outputfile name & dir arguments
 * add more source data fileformats
