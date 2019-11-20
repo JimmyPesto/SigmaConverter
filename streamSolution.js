@@ -28,7 +28,7 @@ file.setPath("./ConvertedFiles/");
 file.setFormat("txt");
 const writeStream = fs.createWriteStream(file.getFullPath())//asnyc !!!
 //original Sigma Studio header
-const ORIGINAL_HEADER = "\"Sensitivity Excess Phase - dB SPL/watt (8 ohms, @0.50 meters) (High)\"\r\n\t\"Hz\"\t\"Mag (dB)\"\t\"deg\"\r\n"
+const ORIGINAL_HEADER = "\"Sensitivity Excess Phase - dB SPL/watt (8 ohms, @0.50 meters) (High)\"\r\n      \"Hz\"  \"Mag (dB)\"       \"deg\"\r\n"
 
 
 class Row {
