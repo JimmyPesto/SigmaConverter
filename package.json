@@ -2,9 +2,8 @@
   "name": "sigmaconverter",
   "version": "1.0.0",
   "description": "Convert Speaker Measurement Data to Sigma Studio MLSSA datafile",
-  "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "node streamSolution.js",
     "test": "jest"
   },
   "repository": {

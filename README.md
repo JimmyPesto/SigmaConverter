@@ -11,7 +11,8 @@ Basic node.js app to convert different speaker measurements to the required form
 
 ## Usage:
 npm start /path/to/source.*
-* can be of formats: .frd, ...
+* can be of different formats as long as it has columns in order: frequency magnitude (degrees)
+(optional)
 
 The converted datafile will have the same name as source file with ".txt" file format equivalent to Sigma Studio MLSSA data. It will be stored in the "/converted_data" directory.
 
@@ -20,6 +21,5 @@ readStream -> transformStream -> writeStream
 
 @TODOs
 * Outputfile name & dir arguments
-* add more source data fileformats
 * test with sigma
 * make repo public

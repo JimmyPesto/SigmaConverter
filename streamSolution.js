@@ -33,17 +33,17 @@ const ORIGINAL_HEADER = "\"Sensitivity Excess Phase - dB SPL/watt (8 ohms, @0.50
 
 class Row {
   //always needs frequency and magnitude, phase (deg) is optional
-  
   constructor(frq, mag, deg) {
     const EMPTY_ELEMENT = "";
     const UNDEF = "undefined";
+    const MAX_DECIMAL_DIGITS = 4;
     if(typeof frq === UNDEF || (typeof mag === UNDEF && typeof deg === UNDEF)) {
       console.log("Not enough parameter to init a new row!");
       return;
     }
-    this.frq = frq;
-    this.mag = mag || EMPTY_ELEMENT;
-    this.deg = deg || EMPTY_ELEMENT;
+    this.frq = Number(frq).toFixed(MAX_DECIMAL_DIGITS);
+    this.mag = Number(mag || EMPTY_ELEMENT).toFixed(MAX_DECIMAL_DIGITS);
+    this.deg = Number(deg || EMPTY_ELEMENT).toFixed(MAX_DECIMAL_DIGITS);
     //console.dir(this);
   }
 
@@ -113,7 +113,7 @@ const map = (fn, options = {}) => new Transform({
 writeStream.on('open', function(fd) {
   writeStream.write(ORIGINAL_HEADER); //first write header to dest
   readStream //then pipie parsed lines to dest
-    .pipe(new StringStream('utf-8'))
+    .pipe(new StringStream('ascii'))
     .split('\r\n')
     .pipe(map(transformToMLSSA))
     //.split('\t')
