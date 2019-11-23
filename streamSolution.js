@@ -18,7 +18,7 @@ const argv = process.argv[2];
 console.log({argv});
 if(typeof argv === "undefined") {
   console.log("Error: No output file specified.");
-  console.log("Usage:\nnpm start /path/to/sourcefile.frd\n");
+  console.log("Usage:\nSigmaConverter /path/to/sourcefile.frd\n");
   process.exit();
 }
 let file = new File(argv);
@@ -27,7 +27,7 @@ let file = new File(argv);
 //init in/out streams
 const readStream = fs.createReadStream(file.getFullPath())
 //update file to output dest
-file.setPath("./ConvertedFiles/");
+file.setName(file.name+"_MLSSA");
 file.setFormat("txt");
 const writeStream = fs.createWriteStream(file.getFullPath())//asnyc !!!
 //original Sigma Studio header

@@ -33,6 +33,14 @@ module.exports = class File{
     }
   }
 
+  setName(newName) {
+    if(typeof newName !== "undefined") {
+      this.name = newName;
+    } else {
+      throw new Error("No new name for File specified!");
+    }
+  }
+
   getFullPath() {
     let fullPath = this.prefix + path.join(this.path,this.name+"."+this.format);
     console.log(fullPath);

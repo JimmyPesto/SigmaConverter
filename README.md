@@ -8,9 +8,18 @@ ExampleData directory contains:
 * Speaker Data files from online sound supplier "/DataFiles/Online_Speaker_Data"
 
 Basic node.js app to convert different speaker measurements to the required format of Sigma Studio.
+## Installation
+### Ubuntu (uses apt-get to install node & npm)
+- Open Project directory
+cd /SigmaConverter
+- Make installer executeable
+sudo chmod +x INSTALL.sh
+- run installer (install nodejs & npm, install node_modules required by package.json, npm link)
+sudo ./INSTALL.sh
+
 
 ## Usage:
-npm start /path/to/source.*
+SigmaConverter /path/to/source.*
 * can be of different formats as long as it has columns in order: frequency magnitude (degrees)
 (optional)
 
