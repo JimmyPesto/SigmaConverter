@@ -17,7 +17,7 @@ console.log("Running Sigma Converter");
 const argv_source = process.argv[2];
 
 if(typeof argv_source === "undefined") {
-  console.log("Error: No output file specified.");
+  console.log("Error: No input file specified.");
   console.log("Usage:\nSigmaConverter /path/to/sourcefile.frd [path/to/outputfile.txt]\n");
   process.exit();
 }
