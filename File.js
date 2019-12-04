@@ -3,13 +3,14 @@ const path = require('path');
 module.exports = class File{
   constructor(filePath) {
     if(typeof filePath === "string") {
+      //@TODO check if filePath exists?
       this.prefix= ((filePath.startsWith(".")) ? "./" : "");
       const nameFull = path.basename(filePath);
       this.path = path.dirname(filePath);
       let splitedFile = nameFull.split('.');
       this.format = splitedFile.pop();
       this.name = splitedFile.pop();
-      console.dir(this);
+      //console.dir(this);
     } else {
       throw new Error("No path to file specified!");
     }
@@ -33,9 +34,17 @@ module.exports = class File{
     }
   }
 
+  setName(newName) {
+    if(typeof newName !== "undefined") {
+      this.name = newName;
+    } else {
+      throw new Error("No new name for File specified!");
+    }
+  }
+
   getFullPath() {
     let fullPath = this.prefix + path.join(this.path,this.name+"."+this.format);
-    console.log(fullPath);
+    //console.log(fullPath);
     return fullPath;
   }
 }

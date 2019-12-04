@@ -12,24 +12,41 @@ const File = require("./File.js");
 
 console.log("Running Sigma Converter");
 
-const destDir = "./ConvertedFiles/";
+//console.log("Commandline arguments:",process.argv[2],process.argv[3]);
 
-const argv = process.argv[2];
-console.log({argv});
-if(typeof argv === "undefined") {
+const argv_source = process.argv[2];
+
+if(typeof argv_source === "undefined") {
   console.log("Error: No output file specified.");
-  console.log("Usage:\nnpm start /path/to/sourcefile.frd\n");
+  console.log("Usage:\nSigmaConverter /path/to/sourcefile.frd [path/to/outputfile.txt]\n");
   process.exit();
 }
-let file = new File(argv);
 
+let file_source = new File(argv_source);
+const argv_dest = process.argv[3];
+let file_dest;
+//no commandline argument for output file specified
+if(typeof argv_dest === "undefined") {
+  // dest will be /path/to/sourcefile_MLSSA.txt
+  file_dest = new File(argv_source);
+  file_dest.setName(file_source.name+"_MLSSA");
+  file_dest.setFormat("txt");
+  console.log("Converted output file stored as:");
+  console.log(file_dest.getFullPath());
+} else { //commandline argument for output file is specified
+  file_dest = new File(argv_dest);
+  //always use txt format for Sigma!
+  if(file_dest.format !== "txt") {
+    file_dest.setFormat("txt");
+    console.log("Converted file must have txt format, storing output file as:");
+    console.log(file_dest.getFullPath());
+  }
+}
 
 //init in/out streams
-const readStream = fs.createReadStream(file.getFullPath())
-//update file to output dest
-file.setPath("./ConvertedFiles/");
-file.setFormat("txt");
-const writeStream = fs.createWriteStream(file.getFullPath())//asnyc !!!
+const readStream = fs.createReadStream(file_source.getFullPath())
+const writeStream = fs.createWriteStream(file_dest.getFullPath())//asnyc !!!
+
 //original Sigma Studio header
 const ORIGINAL_HEADER = "\"Sensitivity Excess Phase - dB SPL/watt (8 ohms, @0.50 meters) (High)\"\r\n      \"Hz\"  \"Mag (dB)\"       \"deg\"\r\n"
 
@@ -55,7 +72,7 @@ class Row {
     const SPACER = ",   ";
     const END_OF_LINE = "\r\n";
     const str = "  "+this.frq+SPACER+this.mag+SPACER+this.deg+END_OF_LINE;
-    console.log({str});
+    //console.log({str});
     return str;
   }
 }
@@ -80,7 +97,7 @@ let lines_count = 0;
 //convert text line to Sigma MLSSA Textline when possible
 const transformToMLSSA = function(line) {
 		lines_count++;
-		console.log({line},{lines_count});
+		//console.log({line},{lines_count});
     if(isHeader(line)) {
       //line is header, skip it!
       return "";
@@ -112,6 +129,8 @@ const map = (fn, options = {}) => new Transform({
   }
 })
 
+console.log("Start converting");
+console.log("...");
 //When write stream is open, start parsing
 writeStream.on('open', function(fd) {
   writeStream.write(ORIGINAL_HEADER); //first write header to dest
@@ -122,3 +141,7 @@ writeStream.on('open', function(fd) {
     //.split('\t')
     .pipe(writeStream);
 });
+//display when programm has finished
+writeStream.on('finish', function() {
+  console.log("Finished converting!")
+})

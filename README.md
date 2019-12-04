@@ -8,18 +8,30 @@ ExampleData directory contains:
 * Speaker Data files from online sound supplier "/DataFiles/Online_Speaker_Data"
 
 Basic node.js app to convert different speaker measurements to the required format of Sigma Studio.
+## Installation
+### Ubuntu (uses apt-get to install node & npm)
+- Open Project directory
+cd /SigmaConverter
+- Make installer executeable
+sudo chmod +x INSTALL.sh
+- run installer as root to install nodejs & npm, node_modules required by package.json and run npm link for global usage
+sudo ./INSTALL.sh
+
 
 ## Usage:
-npm start /path/to/source.*
-* can be of different formats as long as it has columns in order: frequency magnitude (degrees)
-(optional)
+SigmaConverter /path/to/source.* [/path/to/outputfile.txt**]
+* can be of different formats as long as it has columns in order: frequency magnitude [degrees (optional)]
 
-The converted datafile will have the same name as source file with ".txt" file format equivalent to Sigma Studio MLSSA data. It will be stored in the "/converted_data" directory.
+** if not already set, converter will use txt format for Sigma Studio compability
+
+When no outputfile is specified (optional), converted datafile will have the same name as source file but ends with "_MLSSA" and has ".txt" format equivalent to Sigma Studio MLSSA data. It will be stored in the directory of the sourcefile.
+
 
 ## How it works
+get and set source and output file paths and names
 readStream -> transformStream -> writeStream
 
 @TODOs
-* Outputfile name & dir arguments
-* test with sigma
+* automatically check source header for frq, mag, deg order
+* check if file exists or can be created in File contructor
 * make repo public
