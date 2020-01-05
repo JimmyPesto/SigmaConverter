@@ -23,6 +23,7 @@ sudo ./INSTALL.sh
 
 ## Usage:
 SigmaConverter /path/to/source.* [/path/to/outputfile.txt**]
+
 \* can be of different formats as long as it has columns in order: frequency magnitude [degrees (optional)]
 
 \*\* if not already set, converter will always use txt format for Sigma Studio compability
