@@ -16,14 +16,22 @@ ExampleData directory contains:
 ### Ubuntu (uses apt-get to install node & npm)
 - Open Project directory
 - Make installer executeable
+```Shell
+cd /SigmaConverter
+```
+- Make installer executeable
+```Shell
 sudo chmod +x INSTALL.sh
+```
 - run installer as root to install nodejs & npm, node_modules required by package.json and run npm link for global usage
+```Shell
 sudo ./INSTALL.sh
-
+```
 
 ## Usage:
+```Shell
 SigmaConverter /path/to/source.* [/path/to/outputfile.txt**]
-
+```
 \* can be of different formats as long as it has columns in order: frequency magnitude [degrees (optional)]
 
 \*\* if not already set, converter will always use txt format for Sigma Studio compability
